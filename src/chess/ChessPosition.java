@@ -5,10 +5,10 @@ import boardgame.Position;
 public class ChessPosition {
 
 	private char column;
-	private Integer row;
+	private int row;
 	
 	
-	public ChessPosition(char column, Integer row) {
+	public ChessPosition(char column, int row) {
 		if (column < 'a' || column > 'h' || row < 1 || row > 8) {
 			throw new ChessException("Error instantiating ChessPosition. Valid values are from a1 to h8.");
 		}
@@ -20,7 +20,7 @@ public class ChessPosition {
 		return column;
 	}
 
-	public Integer getRow() {
+	public int getRow() {
 		return row;
 	}
 	
@@ -29,7 +29,7 @@ public class ChessPosition {
 	}
 	
 	protected static ChessPosition fromPosition(Position position) {
-		return new ChessPosition((char) ('a' - position.getColumn()), 8 - position.getRow());
+		return new ChessPosition((char)('a' - position.getColumn()), 8 - position.getRow());
 	}
 	
 	@Override
