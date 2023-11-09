@@ -1,6 +1,9 @@
 package chess;
 
 import boardgame.Board;
+import boardgame.Position;
+import chess.pieces.King;
+import chess.pieces.Rook;
 
 public class ChessMatch {
 
@@ -8,9 +11,15 @@ public class ChessMatch {
 	
 	public ChessMatch() {
 		board = new Board(8, 8);
+		// A própri classe ChessMatch é a responsável por definir a dimensão do meu tabuleiro
+		initialSetup();
 	}
 	
 	public ChessPiece[][] getPieces() {
+		/**
+		 * A função desse método e percorrer cada peça(piece) do meu tabuleiro (board)
+		 * e retornar uma peça de xadres (ChessPiece). Isso será feito com DownCasting
+		 */
 		ChessPiece[][] mat = new ChessPiece[board.getRows()][board.getColumns()];
 		
 		for (int i = 0; i < board.getRows(); i++) {
@@ -20,5 +29,11 @@ public class ChessMatch {
 		}
 		
 		return mat;
+	}
+	
+	private void initialSetup() {
+		board.placePiece(new Rook(board, Color.WHITE), new Position(2, 1));
+		board.placePiece(new King(board, Color.BLACK), new Position(0, 4));
+		board.placePiece(new King(board, Color.WHITE), new Position(7, 4));							
 	}
 }
